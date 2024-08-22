@@ -170,10 +170,32 @@ class M_logistik extends CI_Model
 			
 		}else{
 			
-			$no_inv_beli    = $this->input->post('no_inv_beli');
+			$no_inv_beli         = $this->input->post('no_inv_beli');
+			$tgl_inv             = $this->input->post('tgl_inv');
+
+			$no_inv_beli_edit    = explode('/',$no_inv_beli);
+			$inv                 = $no_inv_beli_edit[0];
+			$tgll                = $no_inv_beli_edit[1];
+			$mpl                 = $no_inv_beli_edit[2];
+			$no_acak             = $no_inv_beli_edit[3];
+
+			$tanggal             = explode('-',$tgl_inv);
+			$tahun               = $tanggal[0];
+			$bulan               = $tanggal[1];
+			$tgl                 = $tanggal[2];
+			$no_tgl              = $tahun.$bulan.$tgl;
+			
+			if($tgll == $no_tgl)
+			{
+				$tgl_edit = $tgll;
+			}else{
+				$tgl_edit = $no_tgl;
+			}
+			
+			$m_no_inv  = $inv.'/'.$tgl_edit.'/'.$mpl.'/'.$no_acak;
 
 			$data_header = array(
-				'no_inv_beli'   => $no_inv_beli,
+				'no_inv_beli'   => $m_no_inv,
 				'tgl_inv'       => $this->input->post('tgl_inv'),
 				'nm_penjual'    => $this->input->post('nm_penjual'),
 				'nm_pembeli'    => $this->input->post('nm_pembeli'),
@@ -200,7 +222,7 @@ class M_logistik extends CI_Model
 				for($loop = 0; $loop <= $rowloop; $loop++)
 				{
 					$data_detail = array(				
-						'no_inv_beli'       => $this->input->post('no_inv_beli'),
+						'no_inv_beli'       => $m_no_inv,
 						'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
 						'berat'     		=> str_replace('.','',$this->input->post('berat['.$loop.']')),
 						'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),

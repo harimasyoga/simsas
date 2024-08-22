@@ -170,10 +170,6 @@
 										<div class="input-group mb-1">
 											
 											<input type="text" size="5" name="satuan[0]" id="satuan0" class="form-control" placeholder='-'>
-											<div class="input-group-append">
-												<span class="input-group-text"><b>gr</b>
-												</span>
-											</div>	
 												
 										</div>
 										
@@ -348,10 +344,6 @@
 							<div class="input-group mb-1">
 								
 								<input type="text" size="5" name="satuan[${rowNum}]" id="satuan${rowNum}" class="form-control" placeholder='-'>
-								<div class="input-group-append">
-									<span class="input-group-text"><b>gr</b>
-									</span>
-								</div>	
 									
 							</div>
 							
@@ -608,10 +600,6 @@
 										<div class="input-group mb-1">
 											
 											<input type="text" size="5" name="satuan[${no}]" id="satuan${no}" class="form-control" value="${(val.satuan)}">
-											<div class="input-group-append">
-												<span class="input-group-text"><b>gr</b>
-												</span>
-											</div>	
 												
 										</div>
 										
