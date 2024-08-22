@@ -631,6 +631,51 @@ class M_fungsi extends CI_Model {
 		$this->mpdf->output($jdlsave,'I');
     }
 	
+	function mpdf($form='',$uk='' , $judul='',$isi='',$jdlsave='',$lMargin='',$rMargin='',$font=10,$orientasi='',$hal='',$tab='',$tMargin='')
+    {
+        ini_set("memory_limit", "-1");
+        ini_set("MAX_EXECUTION_TIME","-1");
+		ini_set("pcre.backtrack_limit", "5000000");
+		set_time_limit(0);
+		
+        $jam = date("H:i:s");
+		if ($hal==''){
+			$hal1=1;
+		} 
+		if($hal!==''){
+			$hal1=$hal;
+		}
+		if ($font==''){
+			$size=12;
+		}else{
+			$size=$font;
+		} 
+
+		if ($tMargin=='' ){
+			$tMargin=10;
+		}
+		
+		if($lMargin==''){
+			$lMargin=15;
+		}
+
+		if($rMargin==''){
+			$rMargin=15;
+		}
+
+        $this->mpdf = new \Mpdf\Mpdf( array(190,236),$size,'',$lMargin,$rMargin,$tMargin);
+
+        $this->mpdf->AddPage($form,$uk);
+
+		$this->mpdf->SetFooter('Tercetak {DATE j-m-Y H:i:s} |Halaman {PAGENO} / {nb}| ');
+
+		$this->mpdf->setTitle($judul);
+
+        $this->mpdf->writeHTML($isi);
+
+		$this->mpdf->output($jdlsave,'I');
+    }
+	
 	function mPDFP($html)
 	{
 		$mpdf = new \Mpdf\Mpdf;
