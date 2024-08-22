@@ -4733,7 +4733,7 @@ class Logistik extends CI_Controller
 				
 				$data[] = $row;
 				$i++;
-			}
+			} 
 		
 		}else if ($jenis == "inv_umum") {			
 			$query = $this->db->query("SELECT * FROM invoice_header_umum a
