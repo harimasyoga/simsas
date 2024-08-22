@@ -7292,107 +7292,119 @@ class Logistik extends CI_Controller
 join m_penjual b on a.nm_penjual=b.id
 where no_inv_beli='$no_invoice'")->row();
 
-		$html .= '<table cellspacing="0" style="font-size:11px;color:#000;border-collapse:collapse;vertical-align:top;width:100%;font-family: &quot;YACgEe79vK0 0&quot;, _fb_, auto;" BORDER="0">
-		<br>
+		$html .= "<table cellspacing=\"0\" style=\"font-size:11px;color:#000;border-collapse:collapse;vertical-align:top;width:100%;font-family: &quot;YACgEe79vK0 0&quot;, _fb_, auto;\" BORDER=\"0\">
+		
         <tr>            
-            <td style="background-color:#386fa4;font-size:20px;text-align:center;font-weight:bold" >&nbsp;</td>
+            <td style=\"background-color:#386fa4;font-size:20px;text-align:center;font-weight:bold\" >&nbsp;</td>
         </tr>
 		
         <tr>            
-            <td style="font-size:10px;" >&nbsp;</td>
+            <td style=\"font-size:10px;\" >&nbsp;</td>
         </tr>
 
 		<tr>            
-            <td style="color:#386fa4;font-size:40px;text-align:center;font-weight:bold" >INVOICE</td>            
+            <td style=\"color:#386fa4;font-size:40px;text-align:center;font-weight:bold\" >INVOICE</td>            
         </tr>
 		<tr>            
-            <td style="color:#386fa4;font-size:15px;text-align:center;" >No.'.$data_detail->no_inv_beli.'</td>            
-        </tr>
-		';
+            <td style=\"color:#386fa4;font-size:15px;text-align:center;\" >No.$data_detail->no_inv_beli</td>            
+        </tr><br><br><br><br>
+		";
 
-        $html .= '</table> <br><br>';
+        $html .= "</table> ";
 
-        $html .= '<table cellspacing="0" style="font-size:11px;color:#000;border-collapse:collapse;vertical-align:top;width:100%;font-family:"Trebuchet MS", Helvetica, sans-serif;" border="0">
+        $html .= "<table cellspacing=\"0\" style=\"font-size:11px;color:#000;border-collapse:collapse;vertical-align:top;width:100%;font-family:\"Trebuchet MS\", Helvetica, sans-serif;\" border=\"0\">
         <tr>
-            <th style="border:0;padding:2px 0;height:0;width:14%"></th>
-            <th style="border:0;padding:2px 0;height:0;width:1%"></th>
-            <th style="border:0;padding:2px 0;height:0;width:30%"></th>
-            <th style="border:0;padding:2px 0;height:0;width:12%"></th>
-            <th style="border:0;padding:2px 0;height:0;width:1%"></th>
-            <th style="border:0;padding:2px 0;height:0;width:42%"></th>
-        </tr>';
+            <th style=\"border:0;padding:2px 0;height:0;width:14%\"></th>
+            <th style=\"border:0;padding:2px 0;height:0;width:1%\"></th>
+            <th style=\"border:0;padding:2px 0;height:0;width:30%\"></th>
+            <th style=\"border:0;padding:2px 0;height:0;width:12%\"></th>
+            <th style=\"border:0;padding:2px 0;height:0;width:1%\"></th>
+            <th style=\"border:0;padding:2px 0;height:0;width:42%\"></th>
+        </tr>";
 
-		$html .= '<tr>
-			<td style="padding:3px 0;color:#386fa4;font-weight:bold">Invoice From</td>
-			<td style="padding:3px 0">:</td>
-			<td style="padding:0 3px 0 0;line-height:1.8">'.$data_detail->nama.'</td>
-			<td style="padding:3px 0;color:#386fa4;font-weight:bold">Invoice To</td>
-			<td style="padding:3px 0">:</td>
-			<td style="padding:0;line-height:1.8">'.$data_detail->nm_pembeli.'</td>
-			</tr>';
-		
-			$html .= '<tr>
-			<td style="padding:3px 0;color:#386fa4;font-weight:bold">Invoice Date</td>
-			<td style="padding:3px 0">:</td>
-			<td style="padding:0 3px 0 0;line-height:1.8">'.$this->m_fungsi->tanggal_format_indonesia($data_detail->tgl_inv).'</td>
-			<td style="padding:3px 0;color:#386fa4;font-weight:bold"></td>
-			<td style="padding:3px 0"></td>
-			<td style="padding:0;line-height:1.8">'.$data_detail->alamat_kirim1.'</td>
-			</tr>';
+		$html .= "<tr>
+			<td style=\"padding:3px 0;color:#386fa4;font-weight:bold\">Invoice From</td>
+			<td style=\"padding:3px 0\">:</td>
+			<td style=\"padding:0 3px 0 0;line-height:1.8\">$data_detail->nama</td>
+			<td style=\"padding:3px 0;color:#386fa4;font-weight:bold\">Invoice To</td>
+			<td style=\"padding:3px 0\">:</td>
+			<td style=\"padding:0;line-height:1.8\">$data_detail->nm_pembeli</td>
+			</tr>";
 
-		$html .= '</td>
-		</tr>';
 
-        $html .= '</table>';
+			$html .= "<tr>
+			<td style=\"padding:3px 0;color:#386fa4;font-weight:bold\">Invoice Date</td>
+			<td style=\"padding:3px 0\">:</td>
+			<td style=\"padding:0 3px 0 0;line-height:1.8\">".$this->m_fungsi->tanggal_format_indonesia($data_detail->tgl_inv)."</td>
+			<td style=\"padding:3px 0;color:#386fa4;font-weight:bold\"></td>
+			<td style=\"padding:3px 0\"></td>
+			<td style=\"padding:0;line-height:1.8\">$data_detail->alamat_kirim1</td>
+			</tr>";
+
+		$html .= "</td>
+		</tr>";
+
+        $html .= "</table>";
 
 		// I S I //
 
 	
-        $html .= '<table cellspacing="0" style="font-size:11px;color:#000;border-collapse:collapse;vertical-align:top;width:100%;font-family:"Trebuchet MS", Helvetica, sans-serif" border="0">
+        $html .= "<table cellspacing=\"0\" style=\"font-size:11px;color:#000;border-collapse:collapse;vertical-align:top;width:100%;font-family:\"Trebuchet MS\", Helvetica, sans-serif\" border=\"0\">
         <tr>
-            <th style="height:15px;width:40%"></th>
-            <th style="height:15px;width:10%"></th>
-            <th style="height:15px;width:15%"></th>
-            <th style="height:15px;width:7%"></th>
-            <th style="height:15px;width:10%"></th>
-            <th style="height:15px;width:5%"></th>
-            <th style="height:15px;width:13%"></th>
-        </tr>';
+            <th style=\"height:15px;width:40%\"></th>
+            <th style=\"height:15px;width:10%\"></th>
+            <th style=\"height:15px;width:15%\"></th>
+            <th style=\"height:15px;width:7%\"></th>
+            <th style=\"height:15px;width:10%\"></th>
+            <th style=\"height:15px;width:5%\"></th>
+            <th style=\"height:15px;width:13%\"></th>
+        </tr>";
 
-        $html .= '<tr>
-            <td style="border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff">NAMA BARANG</td>
+        $html .= "<tr>
+            <td style=\"border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff\">NAMA BARANG</td>
 			
-            <td style="border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff">QTY</td>
+            <td style=\"border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff\">QTY</td>
 						
-            <td style="border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff">SATUAN</td>
+            <td style=\"border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff\">SATUAN</td>
 			
-            <td style="border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff" colspan="2">HARGA</td>
+            <td style=\"border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff\" colspan=\"2\">HARGA</td>
 			
-            <td style="border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff" colspan="2">TOTAL</td>
+            <td style=\"border:1px solid #000;border-width:1px 0;padding:5px 0;text-align:center;font-weight:bold;background-color: #386fa4;color: #fff\" colspan=\"2\">TOTAL</td>
 			
-        </tr>';
-		$html .= '<tr>
-			<td style="border:0;padding:20px 0 0" colspan="7"></td>
-		</tr>';
+        </tr>";
+		$html .= "<tr>
+			<td style=\"border:0;padding:20px 0 0\" colspan=\"7\"></td>
+		</tr>";
 		
 		
 		$data_rinci = $this->db->query("SELECT * FROM invoice_detail_umum a
 			where no_inv_beli='$no_invoice'
-			ORDER BY id_det_beli")->result();
+			ORDER BY id_det_beli");
 		
+		if($data_rinci->num_rows() > 1){
+			$nm_produk_result    = '';
+			foreach($data_rinci->result() as $row){
+				$nm_produk_result .= $row->nm_produk.', ';
+			}
+			$nm_produk_loop = $nm_produk_result;
+			
+		}else{				
+			$nm_produk_loop = $data_rinci->row()->nm_produk;
+		}
+
 		$sub_total =0;
-		foreach($data_rinci as $rinci)
+		foreach($data_rinci->result() as $rinci)
 		{
 			
-		$html .= '<tr>
-			<td style="padding:5px 0">'.$rinci->nm_produk.'</td>
-			<td style="solid #000;padding:5px 0;text-align:right">'. number_format($rinci->jumlah, 0, ",", ".").'</td>
-			<td style="solid #000;padding:5px 0;text-align:center">'.$rinci->satuan.'</td>
-			<td style="solid #000;padding:5px 0 0 15px;text-align:right">Rp</td>
-			<td style="solid #000;padding:5px 0;text-align:right">'. number_format($rinci->harga, 0, ",", ".").'</td>
-			<td style="padding:5px 0 0 15px;text-align:right">Rp</td>
-			<td style="padding:5px 0;text-align:right">'.number_format($rinci->jumlah*$rinci->harga, 0, ",", ".") .'</td>
-		</tr>';
+		$html .= "<tr>
+			<td style=\"padding:5px 0\">$rinci->nm_produk</td>
+			<td style=\"solid #000;padding:5px 0;text-align:right\">".number_format($rinci->jumlah,0,',', '.')."</td>
+			<td style=\"solid #000;padding:5px 0;text-align:center\">$rinci->satuan</td>
+			<td style=\"solid #000;padding:5px 0 0 15px;text-align:right\">Rp</td>
+			<td style=\"solid #000;padding:5px 0;text-align:right\">".number_format($rinci->harga, 0,',', '.')."</td>
+			<td style=\"padding:5px 0 0 15px;text-align:right\">Rp</td>
+			<td style=\"padding:5px 0;text-align:right\">".number_format($rinci->jumlah*$rinci->harga, 0, ',', '.')."</td>
+		</tr>";
 
 		$sub_total += $rinci->jumlah*$rinci->harga;
 
@@ -7405,47 +7417,48 @@ where no_inv_beli='$no_invoice'")->row();
 		
 		
 		// T O T A L //
-		$html .= '<tr>
-			<td style="border:0;padding:20px 0 0" colspan="7"></td>
-		</tr>';
+		$html .= "<tr>
+			<td style=\"border:0;padding:20px 0 0\" colspan=\"7\"></td>
+		</tr>";
 
 			$rowspan = 3;
 		
 
-		$html .= '<tr>
-			<td style="border-width:2px 0;border:1px solid;font-weight:bold;padding:5px 0;line-height:1.8;text-transform:uppercase" colspan="3" rowspan="'.$rowspan.'">Terbilang :<br><b><i>'.$this->m_fungsi->terbilang($totalHarga-$data_detail->pajak).'</i></b></td>
+		$html .= "<tr>
+			<td style=\"border-width:2px 0;border:1px solid;font-weight:bold;padding:5px 0;line-height:1.8;text-transform:uppercase\" colspan=\"3\" rowspan=\"$rowspan\">Terbilang :<b><i><br>".$this->m_fungsi->terbilang($totalHarga-$data_detail->pajak)."</i></b></td>
 
-			<td align="right" style="border-top:2px solid #000;font-weight:bold;padding:5px 0 0 15px" colspan="2">Sub Total</td>
+			<td align=\"right\" style=\"border-top:2px solid #000;font-weight:bold;padding:5px 0 0 15px\" colspan=\"2\">Sub Total</td>
 
-			<td style="border-top:2px solid #000;font-weight:bold;padding:5px 0 0 15px;text-align:right">Rp</td>
+			<td style=\"border-top:2px solid #000;font-weight:bold;padding:5px 0 0 15px;text-align:right\">Rp</td>
 
-			<td style="border-top:2px solid #000;font-weight:bold;padding:5px 0;text-align:right">'.number_format($totalHarga, 0, ",", ".").'</td>
-		</tr>';
+			<td style=\"border-top:2px solid #000;font-weight:bold;padding:5px 0;text-align:right\">".number_format($totalHarga, 0, ',', '.')."</td>
+		</tr>";
 		
-		$html .= '<tr>
-			<td align="right" style="border-top:0px solid #000;font-weight:bold;padding:5px 0 0 15px" colspan="2">Pajak (11%)</td>
+		$html .= "<tr>
+			<td align=\"right\" style=\"border-top:0px solid #000;font-weight:bold;padding:5px 0 0 15px\" colspan=\"2\">Pajak (11%)</td>
 
-			<td style="border-top:0px solid #000;font-weight:bold;padding:5px 0 0 15px;text-align:right">Rp</td>
+			<td style=\"border-top:0px solid #000;font-weight:bold;padding:5px 0 0 15px;text-align:right\">Rp</td>
 
-			<td style="border-top:0px solid #000;font-weight:bold;padding:5px 0;text-align:right">'.number_format($data_detail->pajak, 0, ",", ".").'</td>
-		</tr>';
+			<td style=\"border-top:0px solid #000;font-weight:bold;padding:5px 0;text-align:right\">".number_format($data_detail->pajak, 0,',', '.')."</td>
+		</tr>";
 
-		$html .= '<tr>
-			<td align="right" style="border-bottom:2px solid #000;font-weight:bold;padding:5px 0 0 15px" colspan="2">Total</td>
-			<td style="border-bottom:2px solid #000;font-weight:bold;padding:5px 0 0 15px;text-align:right">Rp</td>
-			<td style="border-bottom:2px solid #000;font-weight:bold;padding:5px 0;text-align:right">'.number_format($totalHarga-$data_detail->pajak, 0, ",", ".").'</td>
-		</tr>';
+		$html .= "<tr>
+			<td align=\"right\" style=\"border-bottom:2px solid #000;font-weight:bold;padding:5px 0 0 15px\" colspan=\"2\">Total</td>
+			<td style=\"border-bottom:2px solid #000;font-weight:bold;padding:5px 0 0 15px;text-align:right\">Rp</td>
+			<td style=\"border-bottom:2px solid #000;font-weight:bold;padding:5px 0;text-align:right\">".number_format($totalHarga-$data_detail->pajak, 0, ',', '.')."</td>
+		</tr>";
 
 		//////////////////////////////////////////////// T T D ////////////////////////////////////////////////
 		
-		$html .= '<tr>
-			<td style="border:0;padding:20px 0 0" colspan="7"></td>
-		</tr>';
+		$html .= "<tr>
+			<td style=\"border:0;padding:20px 0 0\" colspan=\"7\"></td>
+		</tr>";
 
-        $html .= '</table>';
+        $html .= "</table>";
 
         // $this->m_fungsi->newPDF($html,'P',77,0);
-		$this->m_fungsi->_mpdf_hari2('P', 'A4', 'INVOICE-'.$no_invoice, $html, 'INVOICE'.$no_invoice.'.pdf', 5, 5, 5, 10);
+		$this->m_fungsi->_mpdf_hari2('P', 'A4', $nm_produk_loop, $html,$nm_produk_loop.'.pdf', 5, 5, 5, 5);
+
 		// echo $html;
 
     }
