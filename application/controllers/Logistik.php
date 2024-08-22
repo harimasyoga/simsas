@@ -5924,8 +5924,20 @@ class Logistik extends CI_Controller
 
 		$header         = $this->db->query("SELECT * FROM invoice_header_beli a WHERE no_inv_beli in ('$no_inv_beli') ORDER BY tgl_inv desc,id_header_beli")->row();
 
-		$rinci_stok     = $this->db->query("SELECT*from invoice_header_beli a JOIN
-				invoice_detail_beli b ON a.no_inv_beli=b.no_inv_beli WHERE a.no_inv_beli='$no_inv_beli' order by b.id_det_beli");
+		$data_rinci = $this->db->query("SELECT*from invoice_header_beli a JOIN
+            invoice_detail_beli b ON a.no_inv_beli=b.no_inv_beli WHERE a.no_inv_beli='$no_inv_beli' order by b.id_det_beli");
+
+		if($data_rinci->num_rows() > 1)
+		{
+			$nm_produk_result    = '';
+			foreach($data_rinci->result() as $row){
+				$nm_produk_result .= substr($row->nm_produk,0,20).', ';
+			}
+			$nm_produk_loop = $nm_produk_result;
+			
+		}else{				
+			$nm_produk_loop = substr($data_rinci->row()->nm_produk,0,20);
+		}
 
 
 		$data['no_inv_beli']    = $header->no_inv_beli;
@@ -5952,12 +5964,12 @@ class Logistik extends CI_Controller
 		switch ($cekpdf) 
 		{
 			case 0;
-				echo ("<title>INV TOKPED</title>");
+				echo ("<title>".$nm_produk_loop."</title>");
 				echo ($html);
 			break;
 
 			case 1;
-			$this->M_fungsi->_mpdf_hari($position, 'A4', $judul, $html, $jdl_save.'.pdf', 5, 5, 5, 10,'','','','INV TOKPED');
+			$this->M_fungsi->_mpdf_hari($position, 'A4', $judul, $html, $jdl_save.'.pdf', 5, 5, 5, 10,'','','','Invoice | Tokopedia');
 			break;
 			
 			break;
@@ -7478,12 +7490,12 @@ where no_inv_beli='$no_invoice'")->row();
 		switch ($cekpdf) 
 		{
 			case 0;
-				echo ("<title>INV TOKPED</title>");
+				echo ("<title>Invoice | Tokopedia</title>");
 				echo ($html);
 			break;
 
 			case 1;
-			$this->M_fungsi->_mpdf_hari($position, 'A4', $judul, $html, $jdl_save.'.pdf', 5, 5, 5, 10,'','','','INV TOKPED');
+			$this->M_fungsi->_mpdf_hari($position, 'A4', $judul, $html, $jdl_save.'.pdf', 5, 5, 5, 10,'','','','Invoice | Tokopedia');
 			break;
 			
 			break;

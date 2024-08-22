@@ -181,9 +181,9 @@ class M_logistik extends CI_Model
 				'alamat_kirim1' => $this->input->post('alamat_kirim1'),
 				'kurir'         => $this->input->post('kurir'),
 				'alamat_kirim2' => $this->input->post('alamat_kirim2'),
-				'ongkir'        => $this->input->post('ongkir'),
-				'asuransi'      => $this->input->post('asuransi'),
-				'jasa'          => $this->input->post('jasa'),
+				'ongkir'        => str_replace('.','',$this->input->post('ongkir')),
+				'asuransi'      => str_replace('.','',$this->input->post('asuransi')),
+				'jasa'          => str_replace('.','',$this->input->post('jasa')),
 				'acc_owner'     => 'N',
 			);
 
