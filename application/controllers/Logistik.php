@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-// mencoba push
+
 class Logistik extends CI_Controller
 {
 

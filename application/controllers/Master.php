@@ -393,7 +393,7 @@ class Master extends CI_Controller
 				$row[] = '<div class="text-center"><a href="javascript:void(0)" onclick="tampil_edit('."'".$r->id."'".','."'detail'".')">'.$i."<a></div>";
 				$row[] = $r->kode;
 				$row[] = $r->nama;
-				$row[] = $r->no_urut;
+				$row[] = '<div class="text-center">'.$r->no_urut.'</div>';
 
 				$idPelanggan = $r->id;
 				$cekProduk = $this->db->query("SELECT * FROM invoice_header_umum WHERE nm_penjual='$idPelanggan'")->num_rows();
