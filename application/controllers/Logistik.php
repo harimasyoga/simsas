@@ -4612,7 +4612,7 @@ class Logistik extends CI_Controller
 			}
 		}else if ($jenis == "inv_beli") {			
 			$query = $this->db->query("SELECT a.* FROM invoice_header_beli a
-			ORDER BY tgl_inv desc,id_header_beli")->result();
+			ORDER BY id_header_beli desc,tgl_inv desc,id_header_beli")->result();
 
 			$i               = 1;
 			foreach ($query as $r) {
@@ -4739,7 +4739,7 @@ class Logistik extends CI_Controller
 		}else if ($jenis == "inv_umum") {			
 			$query = $this->db->query("SELECT * FROM invoice_header_umum a
 			JOIN m_penjual b on a.nm_penjual=b.id
-			ORDER BY tgl_inv desc,id_header_beli")->result();
+			ORDER BY id_header_beli desc,tgl_inv desc,id_header_beli")->result();
 
 			$i               = 1;
 			foreach ($query as $r) {
