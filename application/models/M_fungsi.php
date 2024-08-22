@@ -591,7 +591,6 @@ class M_fungsi extends CI_Model {
 		
 		// $this->load->library('Mpdf');
 
-		$this->mpdf = new \Mpdf\Mpdf( array(190,236),$size,'',$lMargin,$rMargin,$tMargin);
 		
         $jam = date("H:i:s");
 		if ($hal==''){
@@ -606,6 +605,8 @@ class M_fungsi extends CI_Model {
 		}else{
 			$size=$font;
 		} 
+		
+		$this->mpdf = new \Mpdf\Mpdf( array(190,236),$size,'',$lMargin,$rMargin,$tMargin);
 
 		$tMargin = ( $tMargin =='' ? 5 : $tMargin );
 		$bMargin = ( $bMargin =='' ? 5 : $bMargin );
