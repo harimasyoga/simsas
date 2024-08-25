@@ -80,7 +80,7 @@
 							<input type="hidden" name="sts_input" id="sts_input">
 							<input type="hidden" name="id_header_beli" id="id_header_beli">
 
-							<input type="text" class="angka form-control" name="no_inv_beli" id="no_inv_beli" value="AUTO" readonly>
+							<input type="text" class="angka form-control" name="no_inv_beli" id="no_inv_beli">
 						</div>
 						<div class="col-md-1"></div>
 						<div class="col-md-2">PENJUAL</div>
@@ -175,8 +175,14 @@
 											
 											<input type="text" size="5" name="berat[0]" id="berat0" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
 											<div class="input-group-append">
-												<span class="input-group-text"><b>gr</b>
-												</span>
+													<select class="form-control" name="sat_berat" id="sat_berat" style="width: 100%;" >
+														<span class="input-group-text">
+														<b>
+														<option value="gr">gr</option>
+														<option value="Kg">Kg</option>
+														</b>
+														</span>
+													</select> 
 											</div>	
 												
 										</div>
@@ -382,8 +388,14 @@
 								
 								<input type="text" size="5" name="berat[${rowNum}]" id="berat${rowNum}" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
 								<div class="input-group-append">
-									<span class="input-group-text"><b>gr</b>
-									</span>
+									<select class="form-control" name="sat_berat" id="sat_berat" style="width: 100%;" >
+										<span class="input-group-text">
+										<b>
+										<option value="gr">gr</option>
+										<option value="Kg">Kg</option>
+										</b>
+										</span>
+									</select> 
 								</div>	
 									
 							</div>
@@ -597,7 +609,7 @@
 						
 					var no   = 0;
 					$.each(data.detail, function(index, val) {
-						
+						$sat_berat =  val.sat_berat; 
 						list += `
 							<tr id="itemRow${no}">
 									<td id="detail-hapus-${no}">
@@ -618,8 +630,18 @@
 											
 											<input type="text" size="5" name="berat[${no}]" id="berat${no}" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value="${(val.berat)}">
 											<div class="input-group-append">
-												<span class="input-group-text"><b>gr</b>
+												<select class="form-control" name="sat_berat" id="sat_berat" style="width: 100%;" >
+												<span class="input-group-text">
+												<b>
+													<option value="${val.sat_berat}" selected >${val.sat_berat}</option>
+													
+													<hr>
+													<option value='Kg'>Kg</option>
+													<option value='gr'>gr</option>
+													
+												</b>
 												</span>
+												</select> 
 											</div>	
 												
 										</div>
@@ -877,7 +899,7 @@
 	{
 		$tgl = '<?= date('Y-m-d') ?>'	
 		rowNum = 0
-		$("#no_inv_beli").val('AUTO') 
+		$("#no_inv_beli").val('-') 
 		$("#nm_penjual").val('') 
 		$("#tgl_inv").val($tgl) 
 		$("#nm_pembeli").val('Guntara Ajie Prakosa') 
