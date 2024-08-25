@@ -129,7 +129,13 @@ class M_logistik extends CI_Model
 			}
 
 			$no_tgl    = $tahun.$bulan.$tgl;
-			$m_no_inv  = 'INV/'.$no_tgl.'/'.'MPL/'.$no_acak;
+
+			if($this->input->post('no_inv_beli')=='-')
+			{
+				$m_no_inv  = 'INV/'.$no_tgl.'/'.'MPL/'.$no_acak;
+			}else{
+				$m_no_inv  = $this->input->post('no_inv_beli');
+			}
 
 			$data_header = array(
 				'no_inv_beli'   => $m_no_inv,
@@ -157,6 +163,7 @@ class M_logistik extends CI_Model
 					'no_inv_beli'       => $m_no_inv,
 					'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
 					'berat'     		=> str_replace('.','',$this->input->post('berat['.$loop.']')),
+					'sat_berat'     	=> $this->input->post('sat_berat['.$loop.']'),
 					'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
 					'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
 					'total_harga'     	=> str_replace('.','',$this->input->post('total_harga['.$loop.']')),
@@ -225,6 +232,7 @@ class M_logistik extends CI_Model
 						'no_inv_beli'       => $m_no_inv,
 						'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
 						'berat'     		=> str_replace('.','',$this->input->post('berat['.$loop.']')),
+						'sat_berat'     	=> $this->input->post('sat_berat'),
 						'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
 						'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
 						'total_harga'     	=> str_replace('.','',$this->input->post('total_harga['.$loop.']')),
