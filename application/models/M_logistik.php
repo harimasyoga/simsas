@@ -232,7 +232,7 @@ class M_logistik extends CI_Model
 						'no_inv_beli'       => $m_no_inv,
 						'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
 						'berat'     		=> str_replace('.','',$this->input->post('berat['.$loop.']')),
-						'sat_berat'     	=> $this->input->post('sat_berat'),
+						'sat_berat'     	=> $this->input->post('sat_berat['.$loop.']'),
 						'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
 						'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
 						'total_harga'     	=> str_replace('.','',$this->input->post('total_harga['.$loop.']')),
