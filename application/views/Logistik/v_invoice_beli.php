@@ -175,11 +175,11 @@
 											
 											<input type="text" size="5" name="berat[0]" id="berat0" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
 											<div class="input-group-append">
-													<select class="form-control" name="sat_berat" id="sat_berat" style="width: 100%;" >
+													<select class="form-control" name="sat_berat[0]" id="sat_berat0" style="width: 100%;" >
 														<span class="input-group-text">
 														<b>
-														<option value="gr">gr</option>
-														<option value="Kg">Kg</option>
+															<option value="Kg">Kg</option>
+															<option value="gr">gr</option>
 														</b>
 														</span>
 													</select> 
@@ -388,7 +388,7 @@
 								
 								<input type="text" size="5" name="berat[${rowNum}]" id="berat${rowNum}" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
 								<div class="input-group-append">
-									<select class="form-control" name="sat_berat" id="sat_berat" style="width: 100%;" >
+									<select class="form-control" name="sat_berat[${rowNum}]" id="sat_berat${rowNum}" style="width: 100%;" >
 										<span class="input-group-text">
 										<b>
 										<option value="gr">gr</option>
@@ -609,7 +609,6 @@
 						
 					var no   = 0;
 					$.each(data.detail, function(index, val) {
-						$sat_berat =  val.sat_berat; 
 						list += `
 							<tr id="itemRow${no}">
 									<td id="detail-hapus-${no}">
@@ -630,7 +629,7 @@
 											
 											<input type="text" size="5" name="berat[${no}]" id="berat${no}" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value="${(val.berat)}">
 											<div class="input-group-append">
-												<select class="form-control" name="sat_berat" id="sat_berat" style="width: 100%;" >
+												<select class="form-control" name="sat_berat[${no}]" id="sat_berat${no}" style="width: 100%;" >
 												<span class="input-group-text">
 												<b>
 													<option value="${val.sat_berat}" selected >${val.sat_berat}</option>
@@ -910,6 +909,7 @@
 
 		$("#nm_produk0").val('');		
 		$("#berat0").val(0);		
+		// $("#sat_berat0").val(0);		
 		$("#jumlah0").val(0);		
 		$("#harga0").val(0);		
 		$("#total_harga0").val(0);		
