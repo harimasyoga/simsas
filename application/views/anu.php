@@ -366,7 +366,7 @@
 
                   <p data-unify="Typography" color="" class="css-b5ynyk-unf-heading e12ykf338">Berat</p>
 
-                  <p data-unify="Typography" color="" data-testid="lblInvoiceProductContentProductWeight-0" class="css-b5ynyk-unf-heading e12ykf338">: <?=$result->berat?> gram</p>
+                  <p data-unify="Typography" color="" data-testid="lblInvoiceProductContentProductWeight-0" class="css-b5ynyk-unf-heading e12ykf338">: <?=$result->berat?> <?=$result->sat_berat?></p>
                 </div>
               </div>
 
