@@ -173,7 +173,7 @@
 									<td style="padding : 12px 20px">
 										<div class="input-group mb-1">
 											
-											<input type="text" size="5" name="berat[0]" id="berat0" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
+											<input type="text" size="5" name="berat[0]" id="berat0" class="angka form-control" onkeyup="" value='0'>
 											<div class="input-group-append">
 													<select class="form-control" name="sat_berat[0]" id="sat_berat0" style="width: 100%;" >
 														<span class="input-group-text">
@@ -386,7 +386,7 @@
 						<td style="padding : 12px 20px">
 							<div class="input-group mb-1">
 								
-								<input type="text" size="5" name="berat[${rowNum}]" id="berat${rowNum}" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
+								<input type="text" size="5" name="berat[${rowNum}]" id="berat${rowNum}" class="angka form-control" onkeyup="" value='0'>
 								<div class="input-group-append">
 									<select class="form-control" name="sat_berat[${rowNum}]" id="sat_berat${rowNum}" style="width: 100%;" >
 										<span class="input-group-text">
@@ -627,7 +627,7 @@
 									<td style="padding : 12px 20px">
 										<div class="input-group mb-1">
 											
-											<input type="text" size="5" name="berat[${no}]" id="berat${no}" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value="${(val.berat)}">
+											<input type="text" size="5" name="berat[${no}]" id="berat${no}" class="angka form-control" onkeyup="" value="${(val.berat)}">
 											<div class="input-group-append">
 												<select class="form-control" name="sat_berat[${no}]" id="sat_berat${no}" style="width: 100%;" >
 												<span class="input-group-text">

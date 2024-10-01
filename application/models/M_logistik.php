@@ -162,7 +162,7 @@ class M_logistik extends CI_Model
 				$data_detail = array(				
 					'no_inv_beli'       => $m_no_inv,
 					'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
-					'berat'     		=> str_replace('.','',$this->input->post('berat['.$loop.']')),
+					'berat'     		=> $this->input->post('berat['.$loop.']'),
 					'sat_berat'     	=> $this->input->post('sat_berat['.$loop.']'),
 					'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
 					'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
@@ -231,7 +231,7 @@ class M_logistik extends CI_Model
 					$data_detail = array(				
 						'no_inv_beli'       => $m_no_inv,
 						'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
-						'berat'     		=> str_replace('.','',$this->input->post('berat['.$loop.']')),
+						'berat'     		=> $this->input->post('berat['.$loop.']'),
 						'sat_berat'     	=> $this->input->post('sat_berat['.$loop.']'),
 						'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
 						'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
