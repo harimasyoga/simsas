@@ -582,7 +582,7 @@ class M_fungsi extends CI_Model {
 		$this->mpdf->output($jdlsave,'I');
     }
 	
-	function _mpdf_hari2($orientasi='', $uk='', $judul='', $isi='', $jdlsave='', $lMargin='',$rMargin='', $tMargin='', $bMargin='', $font=10, $hal='',$tab='')
+	function _mpdf_hari2($orientasi='', $uk='', $judul='', $isi='', $jdlsave='', $lMargin='',$rMargin='', $tMargin='', $bMargin='', $font=10, $hal='',$tab='',$kertas='',$footer='')
     {
         ini_set("memory_limit", "-1");
         ini_set("MAX_EXECUTION_TIME","-1");
@@ -612,6 +612,14 @@ class M_fungsi extends CI_Model {
 		$bMargin = ( $bMargin =='' ? 5 : $bMargin );
 		$lMargin = ( $lMargin =='' ? 5 : $lMargin );
 		$rMargin = ( $rMargin =='' ? 5 : $rMargin );
+		
+		if($kertas == 'F4'){
+			$orr = array(210, 330);
+		}else if($kertas == 'TT'){ // A4
+			$orr = array(100, 138);
+		}else{ //TT
+			$orr = array(210, 297);
+		}
 
 		$this->mpdf->AddPageByArray(array(
 			'orientation' => $orientasi,
@@ -619,11 +627,17 @@ class M_fungsi extends CI_Model {
 			'margin-right' => $rMargin,
 			'margin-bottom' => $bMargin,
 			'margin-left' => $lMargin,
+			'sheet-size' => $orr,
 		));
 
 		// $this->mpdf->AddPage($orientasi,$uk);
+		if($footer=='no'){
+			
+			$this->mpdf->SetFooter('');
+		}else{
 
-		$this->mpdf->SetFooter('Thank You for Your Business |Halaman {PAGENO} / {nb}| ');
+			$this->mpdf->SetFooter('Thank You for Your Business |Halaman {PAGENO} / {nb}| ');
+		}
 
 		$this->mpdf->setTitle($judul);
 
