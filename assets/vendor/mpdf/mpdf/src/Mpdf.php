@@ -2902,7 +2902,6 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 
 	function AddPage(
 		$orientation = '',
-		$newformat = '',
 		$condition = '',
 		$resetpagenum = '',
 		$pagenumstyle = '',
@@ -2921,7 +2920,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 		$ehvalue = 0,
 		$ofvalue = 0,
 		$efvalue = 0,
-		$pagesel = ''
+		$pagesel = '',
+		$newformat = ''
 	) {
 		/* -- CSS-FLOAT -- */
 		// Float DIV
