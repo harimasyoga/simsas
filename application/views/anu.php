@@ -547,7 +547,7 @@
   <p data-unify="Typography" color="" class="css-b5ynyk-unf-heading e12ykf338">Metode Pembayaran:</p>
 
 
-  <div class="desc"><h6 data-unify="Typography" color="" data-testid="lblInvoiceShippingPayMethod-0" class="css-4sdwdw-unf-heading e12ykf336">GoPay</h6></div></div></div></div></div>
+  <div class="desc"><h6 data-unify="Typography" color="" data-testid="lblInvoiceShippingPayMethod-0" class="css-4sdwdw-unf-heading e12ykf336">BCA Virtual Account</h6></div></div></div></div></div>
   <style data-emotion-css="fsg5fv">
   .css-fsg5fv{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-end;-webkit-box-align:flex-end;-ms-flex-align:flex-end;align-items:flex-end;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin:50px 0 0;}
   .css-fsg5fv p{color:var(--NN950,#3f3f3f);}
