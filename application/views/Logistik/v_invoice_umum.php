@@ -430,7 +430,7 @@
 			var jum_total    = parseInt(jumlah_ok.split('.').join(''))
 
 			var harga        = $("#harga"+loop).val()
-			harga_ok         = (harga=='' || isNaN(harga) || harga == null) ? '0' : harga;
+			harga_ok         = (harga=='' || harga == null) ? '0' : harga;
 			var harga_total  = parseInt(harga_ok.split('.').join(''))
 			
 			total_harga      = jum_total*harga_total			
