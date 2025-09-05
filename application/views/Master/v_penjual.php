@@ -30,7 +30,7 @@
 			</div>
 			<div class="card-body">
 
-				<button type="button" style="font-family:Cambria;" class="tambah_data btn  btn-info pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Tambah Data</b></button>
+				<button type="button" style="font-family:Cambria;" class="tambah_data btn  btn-info pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Tambah Dataa</b></button>
 				<br><br>
 				<div style="overflow:auto;white-space:nowrap">
 					<table id="datatable" class="table table-bordered table-striped" width="100%">
