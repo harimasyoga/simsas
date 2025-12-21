@@ -182,29 +182,39 @@ class M_logistik extends CI_Model
 			
 		}else{
 			
-			$no_inv_beli         = $this->input->post('no_inv_beli');
-			$tgl_inv             = $this->input->post('tgl_inv');
+			$no_inv_beli       = $this->input->post('no_inv_beli');
+			$tgl_inv           = $this->input->post('tgl_inv');
+			$id_header_beli    = $this->input->post('id_header_beli');
 
-			$no_inv_beli_edit    = explode('/',$no_inv_beli);
-			$inv                 = $no_inv_beli_edit[0];
-			$tgll                = $no_inv_beli_edit[1];
-			$mpl                 = $no_inv_beli_edit[2];
-			$no_acak             = $no_inv_beli_edit[3];
+			$cek_no_inv = $this->db->query("SELECT*from invoice_header_beli where id_header_beli ='$id_header_beli' and no_inv_beli like '%/%'")->num_rows();
 
-			$tanggal             = explode('-',$tgl_inv);
-			$tahun               = $tanggal[0];
-			$bulan               = $tanggal[1];
-			$tgl                 = $tanggal[2];
-			$no_tgl              = $tahun.$bulan.$tgl;
-			
-			if($tgll == $no_tgl)
+			if($cek_no_inv > 0)
 			{
-				$tgl_edit = $tgll;
+				$no_inv_beli_edit    = explode('/',$no_inv_beli);
+				$inv                 = $no_inv_beli_edit[0];
+				$tgll                = $no_inv_beli_edit[1];
+				$mpl                 = $no_inv_beli_edit[2];
+				$no_acak             = $no_inv_beli_edit[3];
+
+				$tanggal             = explode('-',$tgl_inv);
+				$tahun               = $tanggal[0];
+				$bulan               = $tanggal[1];
+				$tgl                 = $tanggal[2];
+				$no_tgl              = $tahun.$bulan.$tgl;
+				
+				if($tgll == $no_tgl)
+				{
+					$tgl_edit = $tgll;
+				}else{
+					$tgl_edit = $no_tgl;
+				}
+				
+				$m_no_inv  = $inv.'/'.$tgl_edit.'/'.$mpl.'/'.$no_acak;
 			}else{
-				$tgl_edit = $no_tgl;
+
+				$m_no_inv       = $this->input->post('no_inv_beli');
 			}
 			
-			$m_no_inv  = $inv.'/'.$tgl_edit.'/'.$mpl.'/'.$no_acak;
 
 			$data_header = array(
 				'no_inv_beli'   => $m_no_inv,
@@ -238,17 +248,20 @@ class M_logistik extends CI_Model
 				$rowloop     = $this->input->post('bucket');
 				for($loop = 0; $loop <= $rowloop; $loop++)
 				{
-					$data_detail = array(				
-						'no_inv_beli'       => $m_no_inv,
-						'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
-						'berat'     		=> $this->input->post('berat['.$loop.']'),
-						'sat_berat'     	=> $this->input->post('sat_berat['.$loop.']'),
-						'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
-						'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
-						'total_harga'     	=> str_replace('.','',$this->input->post('total_harga['.$loop.']')),
-					);
-	
-					$result_detail = $this->db->insert('invoice_detail_beli', $data_detail);
+					if($this->input->post('total_harga['.$loop.']')>0)
+					{
+						$data_detail = array(				
+							'no_inv_beli'       => $m_no_inv,
+							'nm_produk'     	=> $this->input->post('nm_produk['.$loop.']'),
+							'berat'     		=> $this->input->post('berat['.$loop.']'),
+							'sat_berat'     	=> $this->input->post('sat_berat['.$loop.']'),
+							'jumlah'     		=> str_replace('.','',$this->input->post('jumlah['.$loop.']')),
+							'harga'     		=> str_replace('.','',$this->input->post('harga['.$loop.']')),
+							'total_harga'     	=> str_replace('.','',$this->input->post('total_harga['.$loop.']')),
+						);
+		
+						$result_detail = $this->db->insert('invoice_detail_beli', $data_detail);
+					}
 				}		
 				return $result_detail;
 			}

@@ -525,6 +525,7 @@
 			return;
 		}
 		// $('#bucket').val(rowNum);
+		hitung_total()
 	}
 
 	function clearRow() 
