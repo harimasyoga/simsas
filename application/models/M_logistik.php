@@ -149,7 +149,9 @@ class M_logistik extends CI_Model
 				'plus' 			=> $this->input->post('plus'),
 				'ket_cash' 		=> $this->input->post('ket_cash'),
 
+				'kupon_barang'  => str_replace('.','',$this->input->post('kupon_barang')),
 				'ongkir'        => str_replace('.','',$this->input->post('ongkir')),
+				'kupon_ongkir'  => str_replace('.','',$this->input->post('kupon_ongkir')),
 				'asuransi'      => str_replace('.','',$this->input->post('asuransi')),
 				'jasa'          => str_replace('.','',$this->input->post('jasa')),
 				'acc_owner'     => 'N',
@@ -215,8 +217,10 @@ class M_logistik extends CI_Model
 				'alamat_kirim2' => $this->input->post('alamat_kirim2'),
 				'plus' 			=> $this->input->post('plus'),
 				'ket_cash' 		=> $this->input->post('ket_cash'),
-				
+
+				'kupon_barang'  => str_replace('.','',$this->input->post('kupon_barang')),
 				'ongkir'        => str_replace('.','',$this->input->post('ongkir')),
+				'kupon_ongkir'  => str_replace('.','',$this->input->post('kupon_ongkir')),
 				'asuransi'      => str_replace('.','',$this->input->post('asuransi')),
 				'jasa'          => str_replace('.','',$this->input->post('jasa')),
 				'acc_owner'     => 'N',
