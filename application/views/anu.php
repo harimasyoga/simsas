@@ -481,8 +481,31 @@
         <h5 data-unify="Typography" color="" class="css-st8xxv-unf-heading e12ykf335">Rp<?=number_format("$total_tagihan",0,",",".")?></h5>
       </div>
 
-      <style data-emotion-css="59ju56">  .css-59ju56{padding:8px 0;color:var(--NN600,#6D7588);font-size:0.8571428571428571rem;line-height:1.2857142857142858rem;}  .css-59ju56 a{color:var(--GN500,#42b549);}  .css-59ju56[data-framed='true']{padding:8px;margin:8px 0;border-radius:4px;background-color:var(--NN50,#e1e1e1);}</style>
+      <style data-emotion-css="59ju56">.css-59ju56{padding:8px 0;color:var(--NN600,#6D7588);font-size:0.8571428571428571rem;line-height:1.2857142857142858rem;}.css-59ju56 a{color:var(--GN500,#00AA5B);}.css-59ju56[data-framed='true']{padding:8px;margin:8px 0;border-radius:4px;background-color:var(--NN50,#F0F3F7);}
+    
+</style>
 
+      <?php
+      if($ket_cash=='YA')
+      {
+      ?>
+      
+        <div class="css-59ju56" data-framed="true">
+            <em>*Cashback yang didapat bisa berubah, 
+            <a href="https://www.tokopedia.com/help/article/informasi-seputar-kupon-cashback-tokopedia">Syarat &amp; Ketentuan
+            
+            </a> berlaku
+            </em>
+        </div>
+
+      <?php 
+      }else{
+      ?>
+        
+        
+      <?php 
+      }
+      ?>
 
     </div>
 
@@ -510,12 +533,36 @@
 
   <div class="col-shipping">
 
-  <div class="item-shipping">
-  <p data-unify="Typography" color="" class="css-b5ynyk-unf-heading e12ykf338">Kurir:</p>
+  <?php
+    if($plus=='PAKAI')
+    {
+    ?>
+    
+      <div class="item-shipping">
+          <div class="desc">
+              <h6 data-unify="Typography" color="" class="css-rdx3c-unf-heading e12ykf336">
+              <img src="https://p16-uploadpedia-sg.tokopedia-static.net/tos-alisg-i-zxty12jeln-sg/plus/plus-box-logo-3x.png~tplv-zxty12jeln-image.image" alt="Bebas Ongkir"/>
+              </h6>
+          </div>
 
+    <?php 
+    }else{
+    ?>
+      
+      <div class="item-shipping">
 
-  <div class="desc"><h6 data-unify="Typography" color="" class="css-4sdwdw-unf-heading e12ykf336"><?= $kurir; ?>
-  </h6></div>
+        <p data-unify="Typography" color="" class="css-b5ynyk-unf-heading e12ykf338">Kurir:</p>
+
+      <div class="desc">
+        <h6 data-unify="Typography" color="" class="css-4sdwdw-unf-heading e12ykf336">
+        <?= $kurir; ?>
+        </h6>
+      </div>
+    <?php 
+    }
+    ?>
+
+    
     
   <?php
   if($asuransi>0)

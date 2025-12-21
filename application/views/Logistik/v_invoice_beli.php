@@ -131,6 +131,32 @@
 						<textarea class="form-control" name="alamat_kirim2" id="alamat_kirim2"></textarea>
 						</div>
 					</div>
+					<div class="card-body row" style="padding-bottom:1px;font-weight:bold">			
+						<div class="col-md-2" style="color:red">PLUS</div>
+						<div class="col-md-3">
+							<label>
+								<input type="radio" id="plus" name="plus" value="PAKAI"  checked> PAKAI
+							</label>&nbsp;&nbsp; || &nbsp;&nbsp;
+							<label>
+								<input type="radio" id="plus" name="plus" value="TIDAK" > TIDAK
+							</label>
+						</div>
+						
+						<div class="col-md-6"></div>
+					</div>
+					<div class="card-body row" style="padding-bottom:1px;font-weight:bold">			
+						<div class="col-md-2" style="color:red">KET CASHBACK</div>
+						<div class="col-md-3">
+							<label>
+								<input type="radio" id="ket_cash" name="ket_cash" value="YA" checked> YA
+							</label>&nbsp;&nbsp; || &nbsp;&nbsp;
+							<label>
+								<input type="radio" id="ket_cash" name="ket_cash" value="TIDAK" > TIDAK
+							</label>
+						</div>
+						
+						<div class="col-md-6"></div>
+					</div>
 
 					<br>
 					
@@ -585,6 +611,13 @@
 					$("#kurir").val(data.header.kurir);
 					$("#alamat_kirim2").val(data.header.alamat_kirim2);
 
+					
+					$("input[name='plus'][value='" + data.header.plus + "']").prop("checked", true).trigger('change');
+
+					
+					$("input[name='ket_cash'][value='" + data.header.ket_cash + "']").prop("checked", true).trigger('change');
+
+
 					ongkir_ok = (data.header.ongkir=='' || isNaN(data.header.ongkir) || data.header.ongkir == null) ? '0' : data.header.ongkir;
 
 					asuransi_ok = (data.header.asuransi=='' || isNaN(data.header.asuransi) || data.header.asuransi == null) ? '0' : data.header.asuransi;	
@@ -930,13 +963,16 @@
 		var alamat_kirim1 = $("#alamat_kirim1").val();
 		var kurir         = $("#kurir").val();
 		var alamat_kirim2 = $("#alamat_kirim2").val();
+		var plus          = $("#plus").val();
+		var ket_cash      = $("#ket_cash").val();
+		
 		var nm_produk0    = $("#nm_produk0").val();
 		var berat0        = $("#berat0").val();
 		var jumlah0       = $("#jumlah0").val();
 		var harga0        = $("#harga0").val();
-		var total_harga0  = $("#total_harga0").val();	
+		var total_harga0  = $("#total_harga0").val();
 		
-		if ( no_inv_beli =='' || nm_penjual =='' || tgl_inv =='' || nm_pembeli =='' || jam_inv =='' || alamat_kirim1 =='' || kurir =='' || alamat_kirim2 =='' || nm_produk0 =='' || berat0 =='' || jumlah0 =='' || harga0 =='' || total_harga0 =='' ) 
+		if ( no_inv_beli =='' || nm_penjual =='' || tgl_inv =='' || nm_pembeli =='' || jam_inv =='' || alamat_kirim1 =='' || alamat_kirim2 =='' || nm_produk0 =='' || berat0 =='' || jumlah0 =='' || harga0 =='' || total_harga0 =='' ) 
 		{
 			swal({
 				title               : "Cek Kembali",
