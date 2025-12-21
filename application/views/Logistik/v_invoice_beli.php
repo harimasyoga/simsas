@@ -253,7 +253,7 @@
 							<tfoot>
 								<tr>
 									<td colspan="5" class="text-right">
-										<label for="total">SUB TOTAL</label>
+										<label for="total">SUB TOTAL BARANG</label>
 									</td>	
 									<td>
 										<div class="input-group mb-1">
@@ -262,6 +262,21 @@
 												</span>
 											</div>		
 											<input type="text" size="5" name="sub_total" id="sub_total" class="angka form-control" value='0' readonly>
+										</div>
+										
+									</td>	
+								</tr>
+								<tr>
+									<td colspan="5" class="text-right">
+										<label for="total" style="color:red">Kupon Diskon Barang dari Platform</label>
+									</td>	
+									<td>
+										<div class="input-group mb-1">
+											<div class="input-group-append">
+												<span class="input-group-text" style="color:red"><b>-</b>
+												</span>
+											</div>		
+											<input type="text" size="5" name="kupon_barang" id="kupon_barang" class="angka form-control" style="border-color:red" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
 										</div>
 										
 									</td>	
@@ -283,7 +298,23 @@
 								</tr>
 								<tr>
 									<td colspan="5" class="text-right">
-										<label for="total">BIAYA ASURANSI KIRIM</label>
+										<label for="total" style="color:red">Kupon Diskon Ongkos Kirim dari Platform</label>
+									</td>	
+									<td>
+										<div class="input-group mb-1">
+											<div class="input-group-append">
+												<span class="input-group-text" style="color:red;"><b>-</b>
+												</span>
+											</div>		
+											<input type="text" size="5" name="kupon_ongkir" id="kupon_ongkir" class="angka form-control" style="border-color:red" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='0'>
+
+										</div>
+										
+									</td>	
+								</tr>
+								<tr>
+									<td colspan="5" class="text-right">
+										<label for="total">ASURANSI PENGIRIMAN</label>
 									</td>	
 									<td>
 										<div class="input-group mb-1">
@@ -508,17 +539,25 @@
 
 	function hitung_total()
 	{	
-		var ongkir          = $("#ongkir").val()
-		ongkir_ok           = (ongkir=='' || isNaN(ongkir) || ongkir == null) ? '0' : ongkir;
-		var ongkir_total    = parseInt(ongkir_ok.split('.').join(''))
+		var kupon_barang          = $("#kupon_barang").val()
+		kupon_barang_ok           = (kupon_barang=='' || isNaN(kupon_barang) || kupon_barang == null) ? '0' : kupon_barang;
+		var kupon_barang_total    = parseInt(kupon_barang_ok.split('.').join(''))
 		
-		var asuransi        = $("#asuransi").val()
-		asuransi_ok         = (asuransi=='' || isNaN(asuransi) || asuransi == null) ? '0' : asuransi;
-		var asuransi_total  = parseInt(asuransi_ok.split('.').join(''))
+		var ongkir                = $("#ongkir").val()
+		ongkir_ok                 = (ongkir=='' || isNaN(ongkir) || ongkir == null) ? '0' : ongkir;
+		var ongkir_total          = parseInt(ongkir_ok.split('.').join(''))
 		
-		var jasa            = $("#jasa").val()
-		jasa_ok             = (jasa=='' || isNaN(jasa) || jasa == null) ? '0' : jasa;
-		var jasa_total      = parseInt(jasa_ok.split('.').join(''))
+		var kupon_ongkir          = $("#kupon_ongkir").val()
+		kupon_ongkir_ok           = (kupon_ongkir=='' || isNaN(kupon_ongkir) || kupon_ongkir == null) ? '0' : kupon_ongkir;
+		var kupon_ongkir_total    = parseInt(kupon_ongkir_ok.split('.').join(''))
+
+		var asuransi              = $("#asuransi").val()
+		asuransi_ok               = (asuransi=='' || isNaN(asuransi) || asuransi == null) ? '0' : asuransi;
+		var asuransi_total        = parseInt(asuransi_ok.split('.').join(''))
+		
+		var jasa                  = $("#jasa").val()
+		jasa_ok                   = (jasa=='' || isNaN(jasa) || jasa == null) ? '0' : jasa;
+		var jasa_total            = parseInt(jasa_ok.split('.').join(''))
 		
 		var sub_total = 0
 		for(loop = 0; loop <= rowNum; loop++)
@@ -538,8 +577,8 @@
 		}		
 		sub_total_ok = (sub_total=='' || isNaN(sub_total) || sub_total == null) ? 0 : sub_total
 				
-		var total_all     = parseInt(sub_total_ok)+ parseInt(ongkir_total)+ parseInt(asuransi_total)+ parseInt(jasa_total)
-
+		var total_all     = parseInt(sub_total_ok)+ parseInt(ongkir_total)+ parseInt(asuransi_total)+ parseInt(jasa_total) - parseInt(kupon_barang_total) - parseInt(kupon_ongkir_total)
+		
 		$("#sub_total").val(format_angka(sub_total_ok))	
 		$("#total_all").val(format_angka(total_all))
 		
@@ -618,7 +657,11 @@
 					$("input[name='ket_cash'][value='" + data.header.ket_cash + "']").prop("checked", true).trigger('change');
 
 
+					kupon_barang_ok = (data.header.kupon_barang=='' || isNaN(data.header.kupon_barang) || data.header.kupon_barang == null) ? '0' : data.header.kupon_barang;
+					
 					ongkir_ok = (data.header.ongkir=='' || isNaN(data.header.ongkir) || data.header.ongkir == null) ? '0' : data.header.ongkir;
+
+					kupon_ongkir_ok = (data.header.kupon_ongkir=='' || isNaN(data.header.kupon_ongkir) || data.header.kupon_ongkir == null) ? '0' : data.header.kupon_ongkir;	
 
 					asuransi_ok = (data.header.asuransi=='' || isNaN(data.header.asuransi) || data.header.asuransi == null) ? '0' : data.header.asuransi;	
 
@@ -734,6 +777,22 @@
 										
 									</td>	
 								</tr>
+								
+								<tr>
+									<td colspan="5" class="text-right">
+										<label for="total" style="color:red">Kupon Diskon Barang dari Platform</label>
+									</td>	
+									<td> 
+										<div class="input-group mb-1">
+											<div class="input-group-append">
+												<span class="input-group-text" style="color:red"><b>-</b>
+												</span>
+											</div>		
+											<input type="text" size="5" name="kupon_barang" id="kupon_barang" class="angka form-control" style="border-color:red" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='${format_angka(kupon_barang_ok)}'>
+										</div>
+										
+									</td>	
+								</tr>
 								<tr>
 									<td colspan="5" class="text-right">
 										<label for="total">TOTAL ONGKIR</label>
@@ -751,7 +810,7 @@
 								</tr>
 								<tr>
 									<td colspan="5" class="text-right">
-										<label for="total">BIAYA ASURANSI KIRIM</label>
+										<label for="total">ASURANSI PENGIRIMAN</label>
 									</td>	
 									<td>
 										<div class="input-group mb-1">
@@ -760,6 +819,23 @@
 												</span>
 											</div>		
 											<input type="text" size="5" name="asuransi" id="asuransi" class="angka form-control" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='${format_angka(asuransi_ok)}'>
+
+										</div>
+										
+									</td>	
+								</tr>
+
+								<tr>
+									<td colspan="5" class="text-right">
+										<label for="total" style="color:red">Kupon Diskon Ongkos Kirim dari Platform</label>
+									</td>	
+									<td>
+										<div class="input-group mb-1">
+											<div class="input-group-append">
+												<span class="input-group-text" style="color:red"><b>-</b>
+												</span>
+											</div>		
+											<input type="text" size="5" name="kupon_ongkir" id="kupon_ongkir" class="angka form-control" style="border-color:red" onkeyup="ubah_angka(this.value,this.id),hitung_total()" value='${format_angka(kupon_ongkir_ok)}'>
 
 										</div>
 										
@@ -965,7 +1041,7 @@
 		var alamat_kirim2 = $("#alamat_kirim2").val();
 		var plus          = $("#plus").val();
 		var ket_cash      = $("#ket_cash").val();
-		
+
 		var nm_produk0    = $("#nm_produk0").val();
 		var berat0        = $("#berat0").val();
 		var jumlah0       = $("#jumlah0").val();

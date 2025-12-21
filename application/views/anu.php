@@ -412,7 +412,7 @@
         
       <?php
       }
-      $total_belanja = $sub_total + $ongkir + $asuransi;
+      $total_belanja = $sub_total + $ongkir + $asuransi -$kupon_barang - $kupon_ongkir ;
       $total_tagihan = $total_belanja + $jasa;
       ?>
 
@@ -435,18 +435,56 @@
       <div class="total first ppn">
 
         <style data-emotion-css="4sdwdw-unf-heading">@font-face{font-family:"Open Sauce One",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;src:local('Open Sauce One Regular'),url('https://assets.tokopedia.net/asts/unify/fonts/OpenSauceOne-Regular.woff2') format('woff2');font-weight:400;font-style:normal;}@font-face{font-family:"Open Sauce One",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;src:local('Open Sauce One ExtraBold'),url('https://assets.tokopedia.net/asts/unify/fonts/OpenSauceOne-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;}  .css-4sdwdw-unf-heading{display:block;position:relative;font-weight:800;font-family:"Open Sauce One",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;font-size:12px;line-height:18px;color:var(--NN600,#6D7588);-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;-webkit-text-decoration:initial;text-decoration:initial;margin:0;}</style>
+          
 
-        <h6 data-unify="Typography" color="" class="css-4sdwdw-unf-heading e12ykf336">Total Harga (<?=$jumlah_total?> Barang)</h6>
+        <h6 data-unify="Typography" color="" class="css-4sdwdw-unf-heading e12ykf336">SubTotal Harga Barang</h6>
+
         <style data-emotion-css="st8xxv-unf-heading">@font-face{font-family:"Open Sauce One",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;src:local('Open Sauce One Regular'),url('https://assets.tokopedia.net/asts/unify/fonts/OpenSauceOne-Regular.woff2') format('woff2');font-weight:400;font-style:normal;}@font-face{font-family:"Open Sauce One",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;src:local('Open Sauce One ExtraBold'),url('https://assets.tokopedia.net/asts/unify/fonts/OpenSauceOne-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;}  .css-st8xxv-unf-heading{display:block;position:relative;font-weight:800;font-family:"Open Sauce One",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;font-size:14px;line-height:20px;color:var(--NN600,#6D7588);-webkit-letter-spacing:-0.1px;-moz-letter-spacing:-0.1px;-ms-letter-spacing:-0.1px;letter-spacing:-0.1px;-webkit-text-decoration:initial;text-decoration:initial;margin:0;}</style>
 
         <h5 data-unify="Typography" color="" class="css-st8xxv-unf-heading e12ykf335">Rp<?=number_format("$sub_total",0,",",".")?></h5>
       </div>
 
-      <div class="item-payment">
-        <p data-unify="Typography" color="" data-testid="lblInvoicePaymentLabelSummary-1" class="css-b5ynyk-unf-heading e12ykf338">Total Ongkos Kirim</p>
+      
+      <?php
+      if($kupon_barang>0)
+      {
+      ?>
+        
+        <div class="item-payment">
+          <p data-unify="Typography" color="" data-testid="lblInvoicePaymentLabelSummary-1" class="css-b5ynyk-unf-heading e12ykf338">Kupon Diskon Barang dari Platform </p>
 
-        <p data-unify="Typography" color="" data-testid="lblInvoicePaymentValueSummary-1" class="css-b5ynyk-unf-heading e12ykf338">Rp<?= number_format("$ongkir",0,",",".") ?></p> 
+          <p data-unify="Typography" color="" data-testid="lblInvoicePaymentValueSummary-1" class="css-b5ynyk-unf-heading e12ykf338">-Rp<?= number_format("$kupon_barang",0,",",".") ?></p>
+        </div>
+      
+      <?php 
+      }else{
+        
+      }
+      ?>
+
+      <div class="item-payment">
+        <p data-unify="Typography" color="" data-testid="lblInvoicePaymentLabelSummary-2" class="css-b5ynyk-unf-heading e12ykf338">Total Ongkos Kirim</p>
+
+        <p data-unify="Typography" color="" data-testid="lblInvoicePaymentValueSummary-2" class="css-b5ynyk-unf-heading e12ykf338">Rp<?= number_format("$ongkir",0,",",".") ?></p> 
       </div>
+
+
+      
+      <?php
+      if($kupon_ongkir>0)
+      {
+      ?>
+        <div class="item-payment">
+          <p data-unify="Typography" color="" data-testid="lblInvoicePaymentLabelSummary-3" class="css-b5ynyk-unf-heading e12ykf338">Kupon Diskon Ongkos Kirim dari Platform</p>
+
+          <p data-unify="Typography" color="" data-testid="lblInvoicePaymentValueSummary-3" class="css-b5ynyk-unf-heading e12ykf338">-Rp<?= number_format("$kupon_ongkir",0,",",".") ?></p>
+        </div>
+
+      <?php 
+      }else{
+        
+      }
+      ?>
 
       <?php
       if($asuransi>0)
@@ -454,7 +492,7 @@
       ?>
       
       <div class="item-payment last">
-        <p data-unify="Typography" color="" data-testid="lblInvoicePaymentLabelSummary-4" class="css-b5ynyk-unf-heading e12ykf338">Biaya Asuransi Pengiriman</p>
+        <p data-unify="Typography" color="" data-testid="lblInvoicePaymentLabelSummary-4" class="css-b5ynyk-unf-heading e12ykf338">Asuransi Pengiriman</p>
 
         <p data-unify="Typography" color="" data-testid="lblInvoicePaymentValueSummary-4" class="css-b5ynyk-unf-heading e12ykf338">Rp<?= number_format("$asuransi",0,",",".") ?></p>
       </div>
