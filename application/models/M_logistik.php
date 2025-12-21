@@ -146,6 +146,9 @@ class M_logistik extends CI_Model
 				'alamat_kirim1' => $this->input->post('alamat_kirim1'),
 				'kurir'         => $this->input->post('kurir'),
 				'alamat_kirim2' => $this->input->post('alamat_kirim2'),
+				'plus' 			=> $this->input->post('plus'),
+				'ket_cash' 		=> $this->input->post('ket_cash'),
+
 				'ongkir'        => str_replace('.','',$this->input->post('ongkir')),
 				'asuransi'      => str_replace('.','',$this->input->post('asuransi')),
 				'jasa'          => str_replace('.','',$this->input->post('jasa')),
@@ -210,6 +213,9 @@ class M_logistik extends CI_Model
 				'alamat_kirim1' => $this->input->post('alamat_kirim1'),
 				'kurir'         => $this->input->post('kurir'),
 				'alamat_kirim2' => $this->input->post('alamat_kirim2'),
+				'plus' 			=> $this->input->post('plus'),
+				'ket_cash' 		=> $this->input->post('ket_cash'),
+				
 				'ongkir'        => str_replace('.','',$this->input->post('ongkir')),
 				'asuransi'      => str_replace('.','',$this->input->post('asuransi')),
 				'jasa'          => str_replace('.','',$this->input->post('jasa')),

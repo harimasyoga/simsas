@@ -5950,6 +5950,8 @@ class Logistik extends CI_Controller
 		$data['alamat_kirim2']  = $header->alamat_kirim2;
 		$data['ongkir']         = $header->ongkir;
 		$data['asuransi']       = $header->asuransi;
+		$data['plus']           = $header->plus;
+		$data['ket_cash']       = $header->ket_cash;
 		$data['jasa']           = $header->jasa;
 		$data['acc_owner']      = $header->acc_owner;
 		$judul                  = 'INVOICE TOKPED';
