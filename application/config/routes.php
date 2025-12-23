@@ -54,4 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-$route['Kge5pB65nbf7iHq'] = 'Nota/Tawon';
+$route['Kge5pB65nbf7iHq']   = 'Nota/Tawon';
+$route['LcsxmMiAGExwo1yA']  = 'Nota/Token_listrik';

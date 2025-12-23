@@ -26,6 +26,18 @@ class Nota extends CI_Controller
 		$this->load->view('Nota/v_tawon_stiker', $data);
 		$this->load->view('footer');
 	}
+
+	
+	public function Token_listrik()
+	{
+		$data = array(
+			'judul' => "NOTA LISTRIK",
+		);
+		$this->load->view('header', $data);
+		$this->load->view('Nota/v_token');
+		$this->load->view('footer');
+	}
+	
 	
 
 	function load_data()
