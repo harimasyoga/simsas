@@ -140,7 +140,7 @@ class Master extends CI_Controller
 	function Penjual()
 	{
 		$data = array(
-			'judul' => "Master Penjual"
+			'judul' => "Master Penjuall"
 		);
 
 		$this->load->view('header', $data);
